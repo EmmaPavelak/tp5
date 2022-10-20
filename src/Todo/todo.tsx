@@ -3,16 +3,24 @@ import "./todo.css";
 
 function Todo(props: any) {
   const todos = props.todos;
-  console.log(todos);
-  return (
-    <ul>
-      {todos.map((item: any, index: number) => (
-        <li key={index} className={item.completed ? "completed" : ""}>
-          Element: {item.title}
-        </li>
-      ))}
-    </ul>
-  );
+  const indexTodo = props.indexTodo;
+
+  if (indexTodo < todos.length - 1) {
+    return (
+      <ul>
+        {
+          <li
+            key={indexTodo}
+            className={todos[indexTodo].completed ? "completed" : ""}
+          >
+            Element: {todos[indexTodo].title}
+          </li>
+        }
+      </ul>
+    );
+  } else {
+    return <div></div>;
+  }
 }
 
 export default Todo;
